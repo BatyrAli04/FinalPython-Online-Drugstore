@@ -1,0 +1,45 @@
+{% extends 'catalog/catalog.html' %}
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+
+
+{% block catalog %}
+<div class="catalog-container">
+    {% if products_list %}
+        <h2 style="text-align: center;">{{ category.name }}</h2>
+    </br>
+        <div class="row">
+        {% for product in page_obj %}
+        <div class="col-md-4">
+
+            <a href="{{ product.get_absolute_url}}">
+                <img class="product-image" src="{{ product.image.url }}" width="120" alt="{{ product.slug }}">
+            </a>
+            <h6>{{ product.title }}</h6>
+            {% include 'add_to_cart.html' %}
+        </div>
+    {% endfor %}
+    </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; at the begining</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">back</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ page_obj.number }} out {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next page</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Previous page &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            It's empty yet!
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

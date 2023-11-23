@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Shop
+{% endblock %}
+
+<style>
+    /* Catalog Styles */
+    .catalog-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    }
+
+    .catalog-container .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    }
+
+    .catalog-container .col-md-4 {
+        border: 1px solid #ddd; 
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        background: #fff; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        margin-bottom: 30px; 
+    }
+
+    .catalog-container .col-md-4:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .catalog-container .product-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    }
+
+    .catalog-container h6 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #555;
+    }
+
+    .catalog-container .add_to_cart {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    .catalog-container .pagination {
+    text-align: center;
+    margin-top: 30px;
+    }
+
+    .catalog-container .step-links a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+    }
+
+    .catalog-container .step-links .current {
+    margin: 0 15px;
+    }
+
+    .catalog-container .alert {
+    text-align: center;
+    margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+    .catalog-container .row {
+        gap: 15px; 
+    }
+    
+    .catalog-container .col-md-4 {
+        margin-bottom: 20px; 
+    }
+
+    .centered-title {
+        text-align: center;
+        width: 50%; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+</style>
+
+{% block content %}
+    <main role="main">
+        <div class="catalog-container">
+            {% block catalog %}{% endblock %}
+        </div>
+    </main>
+{% endblock %}

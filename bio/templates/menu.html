@@ -1,0 +1,86 @@
+{% load static %}
+{% load catalog_extras %}
+
+<!doctype html>
+
+<html lang="en">
+
+<style>
+  
+  .bg-custom-color {
+    background-color: #e6f2ff; 
+  }
+
+  .login-btn, .logout-btn {
+    color: #fff !important; 
+    background-color: #007bff !important; 
+    border-color: #007bff !important; 
+    font-weight: bold !important; 
+    text-transform: uppercase;
+    padding: 10px 15px !important; 
+    font-size: 16px !important; 
+    border-radius: 5px !important; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important; 
+    transition: all 0.2s ease-in-out
+  }
+  
+  .login-btn:hover, .logout-btn:hover {
+    background-color: #0056b3 !important; 
+    border-color: #0056b3 !important; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2) !important; 
+  }
+
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check" viewBox="0 0 16 16">
+    <title>Check</title>
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+  </symbol>
+</svg>
+
+<div class="container py-3">
+  <header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom bg-custom-color">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img src="{% static 'catalog/logo.png' %}" alt="logo" width="70" height="50">
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-5">
+        <a class="nav-link py-2 text-dark text-decoration-none" href="{% url 'home' %}">About Us</a>
+        {% include 'catalog/catalog_menu.html' %}
+        <a class="nav-link py-2 text-dark text-decoration-none" href="{% url 'contactus:contactus' %}">Contact us</a>
+      </nav>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a href="{% url 'fav:favs' %}" class="me-3 py-2 text-dark text-decoration-none">
+        <img src="{% static 'catalog/liked.png' %}" alt="logo" width="25" height="25">
+      </a>
+        <a href="{% url 'cart:cart' %}" class="me-3 py-2 text-dark text-decoration-none">
+        <img src="{% static 'catalog/basket.png' %}" alt="logo" width="25" height="25">
+      </a>
+        {% if user.is_authenticated %}
+        <div class="text-success ">{{ user.get_username }}</div>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <a class="my-2 my-sm-0 logout-btn" role="button" href="{% url 'logout'%}?next={{request.path}}">LogOut</a>
+    {% else %}
+        <a class="my-2 my-sm-0 login-btn" role="button" href="{% url 'login'%}?next={{request.path}}">LogIn</a>
+    {% endif %}
+      </nav>
+    </div>
+  </header>
+</div>
+</body>
+</html>

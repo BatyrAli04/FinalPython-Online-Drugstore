@@ -1,0 +1,41 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+
+{% block title %}Create an account{% endblock %}
+
+
+{% block form %}
+    <div>
+{% if user.is_anonymous %}
+
+<link rel="stylesheet" href="{% static 'ds.css' %}">
+
+<div class="main">
+    <div class="signup">
+    <form method="post" action="{% url 'register' %}">
+      <input type="hidden" name="next" value="">
+        {% csrf_token %}
+        <label aria-hidden="true">Sign up</label>
+        <input type="text" name="username" placeholder="Enter your username" required="">
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" placeholder="Email" name="email"
+             value="" required="" autofocus="" data-cip-id="inputEmail">
+        <input type="text" name="fname" placeholder="First Name" required="">
+        <input type="text" name="sname" placeholder="Second Name" required="">
+        <input type="date" name="dateofbrth" placeholder="Date of Birth" required="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword"  placeholder="Password"
+             name="password" required="" data-cip-id="inputPassword">
+        <input type="password" id="inputPassword" placeholder="Repeat password"
+             name="password2" required="" data-cip-id="inputPassword">
+        <button type="submit">Sign up</button>
+        <a class="link" href="{% url 'login'%}?next={{request.path}}" >Already have an account?</a>
+    </form>
+        </div>
+    {% else %}
+    <p class="text-success">{{ user|upper}}, You are already registered. <br> <a href="{{ '/' }}">Go to the main page</a></p>
+    {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

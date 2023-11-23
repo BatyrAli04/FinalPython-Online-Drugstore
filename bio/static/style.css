@@ -1,0 +1,91 @@
+.search {
+  padding-top: 22px;
+  padding-right: 200px;
+}
+section{
+  height: 70vh;
+}
+.carousel-item img {
+  height: 394px;
+  width: 526px;
+}
+
+.search_input_text {
+  background: #c4c4c4;
+  border-radius: 13px;
+  border: 0;
+
+  background: url(img/image3.svg) no-repeat right center;
+  background-color: rgba(196, 196, 196, 1);
+
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 44px;
+
+  color: #000000;
+}
+h3 {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 44px;
+}
+
+.favorite_cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.item {
+  height: 250px;
+  display: flex;
+}
+.description {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 33px;
+  margin-left: 28px;
+  width: 385px;
+}
+.cart {
+  display: flex;
+  flex-direction: row;
+}
+.cart_pht{
+    margin-left: 375px;
+}
+.centerColAlign{
+        margin-left:46.5%;
+    }
+    html[dir="rtl"] .centerColAlign{
+        margin-right:46.5%;
+    }
+
+.cart p {
+  background: url(../img/svg/Ellipse\ 8.svg) no-repeat right center;
+  height: 38px;
+  width: 38px;
+  text-align: center;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 33px;
+}
+.cart p:last-child {
+  margin-left: 28px;
+}
+.cart_pht img{
+    margin-bottom: 45px;
+}
+
+
+
+
+

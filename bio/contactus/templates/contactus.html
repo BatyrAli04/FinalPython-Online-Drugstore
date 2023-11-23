@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Contact us
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'contact.css' %}">
+    <div class="container">
+        <div class="row g-5">
+        <div class="col-md-7 col-lg-5   ">
+        <form method="post"  action ="{% url 'contactus:contactus' %}">
+            {% csrf_token %}
+        <div class="row g-5">
+            <div1 class="col-md-7 col-lg-5   ">
+                <h3 class="mb-3">How we can help?</h3>
+                 <h4 class="mb-3">Send us a message!</h4>
+                <div class="row g-3">
+                <div class="col-sm-6">
+                    {{ form.as_p }}
+                </div>
+                </div>
+                <input class="w-50 btn btn-primary btn-sm" type="submit" onclick="myFunction()" value="Submit">
+            </div1>
+        </div>
+        </div>
+            </div>
+</div>
+</form>
+<script>
+function myFunction() {
+  alert("Comment saved");
+}
+</script>
+{% endblock %}
+
+

@@ -1,0 +1,84 @@
+{% extends 'catalog/catalog.html' %}
+{% load catalog_extras %}
+{% load static %}
+{% block title %}
+    {{ product.title }}
+{% endblock %}
+{% block catalog %}
+
+<style>
+    #leftCol {
+        float: center; 
+        width: 25%; 
+        padding-right: 20px; 
+    }
+
+    #centerCol {
+        float: center; 
+        width: 70%; 
+        padding-left: 20px; 
+    }
+
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    @media (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column; 
+    }
+
+    .product-image,
+    .product-info {
+        flex-basis: 100%; 
+        max-width: 100%;
+    }
+}
+
+</style>
+
+<script>
+ if(typeof useImageBlockLeftColCentering !== "undefined" && useImageBlockLeftColCentering){
+        mainImgContainer.style.marginRight = rightMargin + "px";
+    }
+    mainImgContainer.style.height = containerHeight + "px";
+</script>
+
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div id="leftCol" class="leftCol">
+          <img src="{{ product.image.url }}" width="120">
+      </div>
+    <div id="centerCol" class="centerColAlign centerColAlign-bbcxoverride">
+        <h2>{{ product.title }} </h2>
+        <p>{{ product.description }}</p>
+        {% include 'add_to_cart.html' %}
+        </div>
+      </div>
+    </div>
+    <hr>
+    {% for reviews in product.reviews.get_queryset%}
+        <p>{{ reviews.rating|view_rating }}</p>
+        <span>{{ reviews.name }}</span>
+    <p> {{ reviews.review }}</p>
+        <hr>
+    {% endfor %}
+
+
+  </div>
+{% endblock %}
+ <script type="text/javascript">
+
+    if(typeof addlongPoleTag === 'function'){
+        addlongPoleTag('af','desktop-html-atf-marker');
+    }
+    if(window.ue) {
+        ue.count("dp_aib_centerCol_height", document.getElementById('centerCol').clientHeight);
+    }
+
+
+</script>
+
